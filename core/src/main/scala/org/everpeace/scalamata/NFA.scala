@@ -11,6 +11,8 @@ case class NFA[Q, Σ](σ: (Q, Σ) => Set[Q], q0: Q, f: Q => Boolean) extends Aut
   def accept(input: Seq[Σ]) = asDFA.accept(input)
 
   def asDFA = DFA[Set[Q],Σ]((qs, input) => qs.flatMap(σ(_, input)), // to state is unioned.
-    Set(q0),                                // initial state is {q0}
-    _.exists(f))
+                            Set(q0),                                // initial state is {q0}
+                            _.exists(f))
+
+  def asNFA = this
 }

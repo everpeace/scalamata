@@ -1,6 +1,7 @@
 package org.everpeace
 
 package object scalamata{
+
   // Set is equivalent to member ship function.
   implicit def set2func[E](set: Set[E]): E => Boolean = set.contains(_)
 

@@ -12,9 +12,10 @@ class εNFAExample {
   case object Q6 extends State3
   case object Q7 extends State3
 
-  val σ3:PartialFunction[(State3, Either[Alpha, ε]),Set[State3]] ={
+  val σ3:(State3, Either[Alpha, ε])=>Set[State3] ={
     case (Q6, Left(A)) => Set(Q7)
     case (Q7,Right(ε)) => Set(Q6)
+    case _ => Set.empty
   }
   val Aplus = εNFA(σ3,Q6,Set[State3](Q7))
 
