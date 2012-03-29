@@ -8,13 +8,18 @@ case object $ extends $
 
 /**
  * Pushdown Automata (Non-Deterministic Automata with Pushdown Store(Stack)
- * σ: transition function: (state, input alphabet, value to pop) =>(next state, value to push)
- * q0: initial state
- * f: member ship function of accepted states
+ * types:
+ *   Q: type of states
+ *   Σ: type of input alphabet
+ *   Γ: type of stack alphabet
+ * arguments:
+ *   σ: transition function: (state, input alphabet, value to pop) =>(next state, value to push)
+ *   q0: initial state
+ *   f: member ship function of accepted states
  */
 case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,$],ε]) => Set[(Q, Either[Either[Γ,$], ε])],
-                                     q0: Q,
-                                     f: Q => Boolean)
+                        q0: Q,
+                        f: Q => Boolean)
   extends Automata[Set[Q], Σ] {
 
   // type aliases for readability.
