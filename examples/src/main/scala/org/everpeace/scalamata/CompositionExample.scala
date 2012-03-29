@@ -1,17 +1,13 @@
 package org.everpeace.scalamata
 
-object CompsitionExample extends App {
+object CompositionExample extends App {
 
   import org.everpeace.scalamata._
 
   sealed abstract class S
-
   case object S0 extends S
-
   case object S1 extends S
-
   case object S2 extends S
-
   case object Sink extends S
 
   def σ(c: Char)
