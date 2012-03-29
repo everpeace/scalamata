@@ -38,17 +38,17 @@ object DFAExample extends App{
   // [output]
   // (true,Q2)
   // (false,Q0)
-  println("DFA on {A,B}* which accepts *AB")
-  println("input:"+Seq(A,B)+"=>"+_ABinDFA.process(Seq(A,B)))
-  println("input:"+Seq(A,A,A,B)+"=>"+_ABinDFA.process(Seq(A,A,A,B)))
+  println("check DFA on {A,B}* which accepts *AB")
+  println("%s".format(Seq(A,B))+"=>"+_ABinDFA(Seq(A,B)))
+  println("%s".format(Seq(A,A,A,B))+"=>"+_ABinDFA(Seq(A,A,A,B)))
   // automata is equivalent to functions from Seq to (Boolean,State)
-  println("input:"+Seq(A,B,A)+"=>"+_ABinDFA(Seq(A,B,A)))
-  println("input:"+Seq(A,B,B,B)+"=>"+_ABinDFA(Seq(A,B,B,B)))
+  println("%s".format(Seq(A,B,A))+"=>"+_ABinDFA(Seq(A,B,A)))
+  println("%s".format(Seq(A,B,B,B))+"=>"+_ABinDFA(Seq(A,B,B,B)))
 
   // cartesian product of automata
   // [output]
   // (true,(Q2,Q2))
-  println("\nDFA on ({A,B},{A,B})* which accepts *(A,A)(B,B)")
-  println("input:"+Seq(A, A, B).zip(Seq(A, A, B))+"=>"+(_ABinDFA × _ABinDFA)(Seq(A, A, B).zip(Seq(A, A, B))))
+  println("\ncheck DFA on ({A,B},{A,B})* which accepts *(A,A)(B,B)")
+  println("%s".format(Seq(A, A, B).zip(Seq(A, A, B)))+"=>"+(_ABinDFA × _ABinDFA)(Seq(A, A, B).zip(Seq(A, A, B))))
 
 }

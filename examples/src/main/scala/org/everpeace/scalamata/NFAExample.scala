@@ -4,7 +4,7 @@ import org.everpeace.scalamata.DFAExample.Alpha
 import org.everpeace.scalamata.DFAExample.A
 import org.everpeace.scalamata.DFAExample.B
 
-class NFAExample extends App{
+object NFAExample extends App{
   // Sample of NFA which accepts *AB.
   //  +----> Q3 --A--> Q4 --B-->Q5
   //  +-A,B--+
@@ -22,13 +22,13 @@ class NFAExample extends App{
   val _ABinNFA = NFA(σ2,Q3,Set[State2](Q5))
 
   //[output]:
-  // (true,Set(Q3,Q5))
-  // (true,Set(Q3,Q5))
-  // (false,Set(Q3,Q4))
-  // (false,Set(Q3))
+  // (true)
+  // (true)
+  // (false)
+  // (false)
   println("\nNFA on {A,B}* which accepts *AB")
-  println("input:"+Seq(A,B)+"=>"+_ABinNFA.process(Seq(A,B)))
-  println("input:"+Seq(A,A,A,B)+"=>"+_ABinNFA.process(Seq(A,A,A,B)))
-  println("input:"+Seq(A,B,A)+"=>"+_ABinNFA.process(Seq(A,B,A)))
-  println("input:"+Seq(A,B,B,B)+"=>"+_ABinNFA.process(Seq(A,B,B,B)))
+  println("%s".format(Seq(A,B))+"=>"+_ABinNFA(Seq(A,B)))
+  println("%s".format(Seq(A,A,A,B))+"=>"+_ABinNFA(Seq(A,A,A,B)))
+  println("%s".format(Seq(A,B,A))+"=>"+_ABinNFA(Seq(A,B,A)))
+  println("%s".format(Seq(A,B,B,B))+"=>"+_ABinNFA(Seq(A,B,B,B)))
 }
