@@ -11,12 +11,15 @@ import scala.Either
  */
 case class DFA[Q, Σ](σ: (Q, Σ) => Q, q0:Q, f: Q => Boolean) extends Automata[Q, Σ]{
 
-  def process(input: Seq[Σ]): (Boolean, Q) = _process(input)(q0)
+  def process(input: Seq[Σ]): (Boolean, Q) = {
+    val final_state = _process(input)(q0)
+    (f(final_state),final_state)
+  }
 
-  private def _process(input: Seq[Σ])(q: Q): (Boolean, Q) = {
+  private def _process(input: Seq[Σ])(q: Q): Q = {
     input match {
       case Seq(x,xs@_*) => _process(xs)(σ(q, x))
-      case _ => (f(q), q)
+      case _ => q
     }
   }
 
