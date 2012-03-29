@@ -45,7 +45,6 @@ Usuage
 ### Compsiting Automata
 	// concatenation
     only_a2 >> only_a2      //only accepts aaaa
-
     
     // parallel composition
     only_a2 >> only_b2      //only accept aa|bb
