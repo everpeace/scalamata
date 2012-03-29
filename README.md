@@ -4,7 +4,7 @@ Scalamata is implementation of some automata. Supported automata is below:
 
 * Deterministic Finite Automata(DFA)
 * Non-Deterministic Finite Automata(NFA)
-* É√-Non-Deterministic Finite Automata(É√NFA) (which is É√-transition equipped NFA)
+* epsilon-Non-Deterministic Finite Automata(epsilon-NFA) (which is epsilon-transition equipped NFA)
 
 Usuage
 -------
@@ -21,14 +21,14 @@ Usuage
     
     // Define Transition Function
     // S0--a-->S1--a-->S2
-    val É– : (S, Char) => S ={
+    val sigma : (S, Char) => S ={
       case (S0, 'a') => S1
       case (S1, 'a') => S2
       case _ => Sink
     }
     
     // Create DFA on Char as Alphabet and S as State.
-    val only_a2 = DFA(É–, S0, Set[S](S2))
+    val only_a2 = DFA(sigma, S0, Set[S](S2))
 
 ### run Automata
 
