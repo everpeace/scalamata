@@ -12,6 +12,11 @@ object PDAExample extends App{
   case object S1 extends S
   case object S2 extends S
 
+  // Pushdown Automata for a^nb^n:
+  // initial state = S0, accepted state = S2
+  //
+  // +-(A,ε->A)-+            +-(B,A->ε)-+
+  // +--->S0----+--(B,A->ε)--+--->S1----+-->(ε,φ->φ)-->S2
   val σ:(S, Either[Alpha,ε],Either[Either[Alpha, φ],ε]) =>Set[(S, Either[Either[Alpha, φ],ε])] = {
     case (S0, Left(A), Right(ε)) => Set((S0, Left(Left(A))))
     case (S0, Left(B), Left(Left(A))) => Set((S1, Right(ε)))
