@@ -11,6 +11,7 @@ package org.everpeace.scalamata
 object DFAExample extends App{
 
   import org.everpeace.scalamata._
+
   // alphabet
   sealed abstract class Alpha
   case object A extends Alpha

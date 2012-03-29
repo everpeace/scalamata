@@ -1,10 +1,12 @@
 package org.everpeace.scalamata
 
-import org.everpeace.scalamata.DFAExample.Alpha
-import org.everpeace.scalamata.DFAExample.A
-import org.everpeace.scalamata.DFAExample.B
-
 object εNFAExample extends App{
+
+  import org.everpeace.scalamata._
+  import org.everpeace.scalamata.DFAExample.Alpha
+  import org.everpeace.scalamata.DFAExample.A
+  import org.everpeace.scalamata.DFAExample.B
+
   // ε-NFA sample which only accepts A+
   // Q6 --A--> Q7
   //  ↑----ε---+
