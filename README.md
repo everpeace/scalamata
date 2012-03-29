@@ -1,9 +1,10 @@
 Scalamata: Automata in Scala
 ----------------------------
 Scalamata is implementation of some automata. Supported automata is below:
-- Deterministic Finite Automata(DFA)
-- Non-Deterministic Finite Automata(NFA)
-- É√-Non-Deterministic Finite Automata(É√NFA) (which is É√-transition equipped NFA)
+
+* Deterministic Finite Automata(DFA)
+* Non-Deterministic Finite Automata(NFA)
+* É√-Non-Deterministic Finite Automata(É√NFA) (which is É√-transition equipped NFA)
 
 Usuage
 -------
