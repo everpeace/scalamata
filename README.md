@@ -47,7 +47,7 @@ Usuage
     only_aa >> only_aa      //only accepts aaaa
     
     // parallel composition
-    only_aa >> only_ba      //only accept aa|bb
+    only_aa >> only_bb      //only accept aa|bb
     
     // complement 
     ! only_aa               //only accept string except for aa
