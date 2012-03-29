@@ -16,7 +16,7 @@ object DFAExample extends App{
   case object A extends Alpha
   case object B extends Alpha
 
-  // DFA which accept *AB
+  // DFA which process *AB
   // +-B-↓       +-A -+
   // +-> Q0 --A--+>Q1 + ---B--> Q2
   //     ↑         ↑------A-----+
@@ -39,8 +39,8 @@ object DFAExample extends App{
   // (true,Q2)
   // (false,Q0)
   println("DFA on {A,B}* which accepts *AB")
-  println("input:"+Seq(A,B)+"=>"+_ABinDFA.accept(Seq(A,B)))
-  println("input:"+Seq(A,A,A,B)+"=>"+_ABinDFA.accept(Seq(A,A,A,B)))
+  println("input:"+Seq(A,B)+"=>"+_ABinDFA.process(Seq(A,B)))
+  println("input:"+Seq(A,A,A,B)+"=>"+_ABinDFA.process(Seq(A,A,A,B)))
   // automata is equivalent to functions from Seq to (Boolean,State)
   println("input:"+Seq(A,B,A)+"=>"+_ABinDFA(Seq(A,B,A)))
   println("input:"+Seq(A,B,B,B)+"=>"+_ABinDFA(Seq(A,B,B,B)))

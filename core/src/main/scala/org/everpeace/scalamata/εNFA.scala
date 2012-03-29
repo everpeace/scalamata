@@ -12,9 +12,9 @@ object ε extends ε
  * q0: initial state
  * f: member ship function of accepted states
  */
-case class εNFA[Q,Σ](σ:(Q, Either[Σ, ε])=>Set[Q],q0:Q, f:Q=>Boolean) extends Automata[Set[Q],Σ]{
+case class εNFA[Q,Σ](σ:(Q, Either[Σ, ε])=>Set[Q], q0:Q, f:Q=>Boolean) extends Automata[Set[Q],Σ]{
   // convert to NFA without ε-transition by eliminating ε-transition
-  def accept(input: Seq[Σ]) = asNFA.accept(input)
+  def process(input: Seq[Σ]) = asNFA.process(input)
 
   def asDFA = asNFA.asDFA
 

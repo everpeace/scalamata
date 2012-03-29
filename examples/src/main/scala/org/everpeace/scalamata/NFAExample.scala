@@ -27,8 +27,8 @@ class NFAExample extends App{
   // (false,Set(Q3,Q4))
   // (false,Set(Q3))
   println("\nNFA on {A,B}* which accepts *AB")
-  println("input:"+Seq(A,B)+"=>"+_ABinNFA.accept(Seq(A,B)))
-  println("input:"+Seq(A,A,A,B)+"=>"+_ABinNFA.accept(Seq(A,A,A,B)))
-  println("input:"+Seq(A,B,A)+"=>"+_ABinNFA.accept(Seq(A,B,A)))
-  println("input:"+Seq(A,B,B,B)+"=>"+_ABinNFA.accept(Seq(A,B,B,B)))
+  println("input:"+Seq(A,B)+"=>"+_ABinNFA.process(Seq(A,B)))
+  println("input:"+Seq(A,A,A,B)+"=>"+_ABinNFA.process(Seq(A,A,A,B)))
+  println("input:"+Seq(A,B,A)+"=>"+_ABinNFA.process(Seq(A,B,A)))
+  println("input:"+Seq(A,B,B,B)+"=>"+_ABinNFA.process(Seq(A,B,B,B)))
 }

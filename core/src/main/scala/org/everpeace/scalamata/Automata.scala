@@ -5,8 +5,6 @@ package org.everpeace.scalamata
  */
 trait Automata[Q, Σ]{
   // return (isAccepted, final state)
-  def accept(input: Seq[Σ]): (Boolean, Q)
-
-  def asDFA:DFA[Q, Σ]
-  def asNFA:NFA[_,Σ]
+  def process(input: Seq[Σ]): (Boolean, Q)
+  def accept(input: Seq[Σ]) = process(input)._1
 }
