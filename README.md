@@ -69,6 +69,6 @@ All Solutions licensed under MIT License. See LICENSE.txt for further details.
 
 Copyright
 ---------
-Copyright (c) 2011 [everpeace](http://twitter.com/everpeace).
+Copyright (c) 2012 [everpeace](http://twitter.com/everpeace).
 
 
