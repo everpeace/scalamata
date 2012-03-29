@@ -4,7 +4,7 @@ import collection.immutable.{Stack => ScalaStack}
 
 // special alphabet for checking stack is empty.
 sealed abstract class $
-case object $ extends $
+case object _$_ extends $
 
 /**
  * Pushdown Automata (Non-Deterministic Automata with Pushdown Store(Stack)
@@ -31,20 +31,19 @@ case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,$],ε]) => S
   case class PDAState(state:Q, stack:PDStack)
 
   def process(input: Seq[Σ]) = {
-    val initialStack = PDStack(ScalaStack(Right(Right($))))
-    val finalStates = _process(input)(Set(PDAState(q0,initialStack))).map(_.state)
-    (finalStates.exists(f),finalStates)
+    val initialStack = PDStack(ScalaStack(Right(_$_)))
+    val finalStates = _process(input)(Set(PDAState(q0,initialStack)))
+    (finalStates.map(_.state).exists(f),finalStates.map(_.state))
   }
 
   private def _process(input: Seq[Σ])(ss: Set[PDAState]):Set[PDAState]
   = input match{
-    case Seq(x,xs@_*) => ss.flatMap(s => process_input(x)(s)
-                                            ++ εClosure(s.state)(s.stack).flatMap(process_input(x)(_)))
+    case Seq(x,xs@_*) => _process(xs)(ss.flatMap(s => process_input(Left(x))(s) ++ εClosure(s).flatMap(process_input(Left(x))(_))))
     case _ => ss.flatMap(s => εClosure(s))
   }
 
   // εClosure: transition closure with ε input.
-  private def εClosure(s:PDAState): Set[PDStack] ={
+  private def εClosure(s:PDAState): Set[PDAState] ={
     var closure = Set.empty[PDAState]
     val queue = new scala.collection.mutable.Queue[PDAState]()
     queue.enqueue(s)
@@ -78,9 +77,9 @@ case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,$],ε]) => S
 
   // ε push-able stack.
   case class PDStack(stack: ScalaStack[Γ$]) {
-    def push(v: Γ$_ε): PDStack = {
+    def push(v: Γ$_ε): PDStack = v match {
       case Right(ε) => PDStack(stack) // ignore ε-push
-      case Left(_) => PDStack(stack.push(v))
+      case Left(γor$) => PDStack(stack.push(γor$))
     }
 
     def pop = PDStack(stack.pop)
