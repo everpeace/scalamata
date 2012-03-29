@@ -32,30 +32,30 @@ Usuage
     //   - transition function: (State,Alphabet) => State
     //   - initial state: State
     //   - accepted states: Set[State] or State=>Boolean
-    val only_a2 = DFA(sigma, S0, Set[S](S2))
+    val only_aa = DFA(sigma, S0, Set[S](S2))
 
 ### Run Automata
 
     // Input of Automata is Seq[Alphabet]. 
     // (i.e. Seq[Char] in this example)
-    only_a2.accept("aa".toSeq)               //true
-    only_a2.accept("".toSeq)                 //false
-    only_a2.accept("ab".toSeq)               //false
+    only_aa.accept("aa".toSeq)               //true
+    only_aa.accept("".toSeq)                 //false
+    only_aa.accept("ab".toSeq)               //false
 
 ### Compsiting Automata
 	// concatenation
-    only_a2 >> only_a2      //only accepts aaaa
+    only_aa >> only_aa      //only accepts aaaa
     
     // parallel composition
-    only_a2 >> only_b2      //only accept aa|bb
+    only_aa >> only_ba      //only accept aa|bb
     
     // complement 
-    ! only_a2               //only accept string except for aa
+    ! only_aa               //only accept string except for aa
     
     // repetitions
-    only_a2 *               // 0 or more times
-    only_a2 +               // 1 or more times
-    only_a2 ?               // 0 re 1 times
+    only_aa *               // 0 or more times
+    only_aa +               // 1 or more times
+    only_aa ?               // 0 re 1 times
 
 ### More Examples
 
