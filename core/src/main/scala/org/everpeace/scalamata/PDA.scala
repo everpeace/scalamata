@@ -3,8 +3,8 @@ package org.everpeace.scalamata
 import collection.immutable.{Stack => ScalaStack}
 
 // special alphabet for checking stack is empty.
-sealed abstract class $
-case object _$_ extends $
+sealed abstract class _$
+object _$ extends _$
 
 /**
  * Pushdown Automata (Non-Deterministic Automata with Pushdown Store(Stack)
@@ -17,13 +17,13 @@ case object _$_ extends $
  *   q0: initial state
  *   f: member ship function of accepted states
  */
-case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,$],ε]) => Set[(Q, Either[Either[Γ,$], ε])],
+case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,_$],ε]) => Set[(Q, Either[Either[Γ,_$], ε])],
                         q0: Q,
                         f: Q => Boolean)
   extends Automata[Set[Q], Σ] {
 
   // type aliases for readability.
-  type Γ$ = Either[Γ, $]
+  type Γ$ = Either[Γ, _$]
   type Γ$_ε = Either[Γ$,ε]
   type Σ_ε = Either[Σ, ε]
 
@@ -31,7 +31,7 @@ case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,$],ε]) => S
   case class PDAState(state:Q, stack:PDStack)
 
   def process(input: Seq[Σ]) = {
-    val initialStack = PDStack(ScalaStack(Right(_$_)))
+    val initialStack = PDStack(ScalaStack(Right(_$)))
     val finalStates = _process(input)(Set(PDAState(q0,initialStack)))
     (finalStates.map(_.state).exists(f),finalStates.map(_.state))
   }
