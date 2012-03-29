@@ -54,7 +54,7 @@ Usuage
     
     // repetitions
     only_aa *               // 0 or more times
-    only_aa +               // 1 or more times
+    only_aa +               // 1 or more times (== only_aa >> (only_aa *)
     only_aa ?               // 0 re 1 times
 
 ### More Examples
