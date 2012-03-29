@@ -2,10 +2,10 @@ Scalamata: Automata in Scala
 ----------------------------
 Scalamata is implementation of some automata. Supported automata is below:
 
-* Deterministic Finite Automata(DFA)
-* Non-Deterministic Finite Automata(NFA)
-* epsilon-Non-Deterministic Finite Automata(epsilon-NFA) (which is epsilon-transition equipped NFA)
-* Pushdown Automata: epsilon-NFA with pushdown storage(stack)
+* Deterministic Finite Automata(DFA) (source)[https://github.com/everpeace/scalamata/blob/master/core/src/main/scala/org/everpeace/scalamata/DFA.scala]
+* Non-Deterministic Finite Automata(NFA) (source)[https://github.com/everpeace/scalamata/blob/master/core/src/main/scala/org/everpeace/scalamata/NFA.scala]
+* epsilon-Non-Deterministic Finite Automata(epsilon-NFA) (which is epsilon-transition equipped NFA) (source)[https://github.com/everpeace/scalamata/blob/master/core/src/main/scala/org/everpeace/scalamata/%CE%B5NFA.scala]
+* Pushdown Automata: epsilon-NFA with pushdown storage(stack) (source)[https://github.com/everpeace/scalamata/blob/master/core/src/main/scala/org/everpeace/scalamata/PDA.scala]
 
 Usuage
 -------
