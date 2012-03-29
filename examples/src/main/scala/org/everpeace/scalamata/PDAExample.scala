@@ -12,13 +12,13 @@ object PDAExample extends App{
   case object S1 extends S
   case object S2 extends S
 
- val σ:(S, Either[Alpha,ε],Either[Either[Alpha, _$],ε]) =>Set[(S, Either[Either[Alpha, _$],ε])] = {
-   case (S0, Left(A), Right(ε)) => Set((S0, Left(Left(A))))
-   case (S0, Left(B), Left(Left(A))) => Set((S1, Right(ε)))
-   case (S1, Left(B), Left(Left(A))) => Set((S1, Right(ε)))
-   case (S1, Right(ε),Left(Right(_$))) => Set((S2, Left(Right(_$))))
-   case _ => Set.empty
- }
+  val σ:(S, Either[Alpha,ε],Either[Either[Alpha, φ],ε]) =>Set[(S, Either[Either[Alpha, φ],ε])] = {
+    case (S0, Left(A), Right(ε)) => Set((S0, Left(Left(A))))
+    case (S0, Left(B), Left(Left(A))) => Set((S1, Right(ε)))
+    case (S1, Left(B), Left(Left(A))) => Set((S1, Right(ε)))
+    case (S1, Right(ε),Left(Right(φ))) => Set((S2, Left(Right(φ))))
+    case _ => Set.empty
+  }
 
   val a_nb_n = PDA(σ,S0,Set[S](S2))
 

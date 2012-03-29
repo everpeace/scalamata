@@ -2,9 +2,9 @@ package org.everpeace.scalamata
 
 import collection.immutable.{Stack => ScalaStack}
 
-// special alphabet for checking stack is empty.
-sealed abstract class _$
-object _$ extends _$
+// special alphabet for representing stack is empty.
+sealed abstract class φ
+object φ extends φ
 
 /**
  * Pushdown Automata (Non-Deterministic Automata with Pushdown Store(Stack)
@@ -14,24 +14,28 @@ object _$ extends _$
  *   Γ: type of stack alphabet
  * arguments:
  *   σ: transition function: (state, input alphabet, value to pop) =>(next state, value to push)
+ *     input alphabet is Σ∪{ε}, Either[Σ,ε] in scala.(ε represents empty string)
+ *     stack alphabet is Γ∪{φ}∪{ε}, Either[Either[Γ,φ],ε] in scala.
+ *         φ: special alphabet which implicitly push to stack at first for checking stack is empty.
+ *         ε: empty string, which means no pop operation or no push operation in transition.
  *   q0: initial state
  *   f: member ship function of accepted states
  */
-case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,_$],ε]) => Set[(Q, Either[Either[Γ,_$], ε])],
+case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,φ],ε]) => Set[(Q, Either[Either[Γ,φ], ε])],
                         q0: Q,
                         f: Q => Boolean)
   extends Automata[Set[Q], Σ] {
 
   // type aliases for readability.
-  type Γ$ = Either[Γ, _$]
-  type Γ$_ε = Either[Γ$,ε]
+  type Γφ = Either[Γ, φ]
+  type Γφ_ε = Either[Γφ,ε]
   type Σ_ε = Either[Σ, ε]
 
   // state of automata execution.
   case class PDAState(state:Q, stack:PDStack)
 
   def process(input: Seq[Σ]) = {
-    val initialStack = PDStack(ScalaStack(Right(_$)))
+    val initialStack = PDStack(ScalaStack(Right(φ)))
     val finalStates = _process(input)(Set(PDAState(q0,initialStack)))
     (finalStates.map(_.state).exists(f),finalStates.map(_.state))
   }
@@ -76,10 +80,10 @@ case class PDA[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Either[Γ,_$],ε]) => 
   }
 
   // ε push-able stack.
-  case class PDStack(stack: ScalaStack[Γ$]) {
-    def push(v: Γ$_ε): PDStack = v match {
+  case class PDStack(stack: ScalaStack[Γφ]) {
+    def push(v: Γφ_ε): PDStack = v match {
       case Right(ε) => PDStack(stack) // ignore ε-push
-      case Left(γor$) => PDStack(stack.push(γor$))
+      case Left(γ_or_φ) => PDStack(stack.push(γ_or_φ))
     }
 
     def pop = PDStack(stack.pop)
