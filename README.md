@@ -44,7 +44,7 @@ Usuage
     only_aa.accept("ab".toSeq)               //false
 
 ### Compsiting Automata
-  // concatenation
+    // concatenation
     only_aa >> only_aa      //only accepts aaaa
 
     // parallel composition
