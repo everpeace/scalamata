@@ -10,7 +10,7 @@ case object $ extends $
 /**
  * PushDown Automata (Non-Deterministic Automata with Pushdown Store(Stack)
  */
-case class PushDownAutomata[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Γ, Either[ε, $]]) => Set[(Q, Either[Γ, ε])],
+case class PushdownAutomata[Q, Σ, Γ](σ : (Q, Either[Σ, ε], Either[Γ, Either[ε, $]]) => Set[(Q, Either[Γ, ε])],
                                      q0: Q,
                                      f: Q => Boolean)
   extends Automata[Set[Q], Σ] {
