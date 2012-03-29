@@ -28,9 +28,13 @@ Usuage
     }
     
     // Create DFA on Char as Alphabet and S as State.
+    // Creating automata needs three arguments
+    //   - transition function: (State,Alphabet) => State
+    //   - initial state: State
+    //   - accepted states: Set[State] or State=>Boolean
     val only_a2 = DFA(sigma, S0, Set[S](S2))
 
-### run Automata
+### Run Automata
 
     // Input of Automata is Seq[Alphabet]. 
     // (i.e. Seq[Char] in this example)
