@@ -11,14 +11,14 @@ object ScalamataBuild extends Build {
       // add other settings here
     )
 
-  lazy val scalamata = Project(
-    id = "scalamata",
+  lazy val root = Project(
+    id = "scalamata-root",
     base = file("."),
     settings = buildSettings,
     aggregate = Seq(core, examples) )
 
   lazy val core = Project(
-    id = "scalamata-core",
+    id = "scalamata",
     base = file("core"),
     settings = buildSettings )
 
